@@ -1,0 +1,10 @@
+
+mkdir filename
+cd filename
+nano javacode.java
+nano input.txt
+javac -source 1.8 -target 1.8 -classpath $(hadoop classpath) -d . javacode.java
+jar -cvf wordfreq.jar *
+hdfs dfs -rm -r /output
+hadoop jar wordfreq.jar MatrixMultiplication /input /output 2 2
+hdfs dfs -cat /output/part-r-00000
